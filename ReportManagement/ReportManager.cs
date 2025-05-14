@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReportManagement
 {
-    class ReportManager
+    public class ReportManager
     {
         public List<Report> Reports { get; private set; }
         public ReportManager()

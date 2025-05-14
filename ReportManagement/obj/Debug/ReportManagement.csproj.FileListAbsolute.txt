@@ -8,3 +8,13 @@ E:\Учеба\Тестирование\ReportManagement\ReportManagement\obj\Deb
 E:\Учеба\Тестирование\ReportManagement\ReportManagement\obj\Debug\ReportManagement.csproj.CoreCompileInputs.cache
 E:\Учеба\Тестирование\ReportManagement\ReportManagement\obj\Debug\ReportManagement.exe
 E:\Учеба\Тестирование\ReportManagement\ReportManagement\obj\Debug\ReportManagement.pdb
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\bin\Debug\ReportManagement.exe.config
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\bin\Debug\ReportManagement.exe
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\bin\Debug\ReportManagement.pdb
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\obj\Debug\ReportManagement.csproj.AssemblyReference.cache
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\obj\Debug\ReportManagement.ReportForm.resources
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\obj\Debug\ReportManagement.Properties.Resources.resources
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\obj\Debug\ReportManagement.csproj.GenerateResource.cache
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\obj\Debug\ReportManagement.csproj.CoreCompileInputs.cache
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\obj\Debug\ReportManagement.exe
+H:\Учеба\Тестирование\Лабораторные\ReportManagement\obj\Debug\ReportManagement.pdb
