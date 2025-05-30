@@ -50,6 +50,8 @@ namespace ReportManagement
         {
             if (string.IsNullOrWhiteSpace(category))
                 throw new Exception("Название категории не может быть пустым");
+            if (Categories.Contains(category))
+                throw new Exception("Категория уже существует");
             Categories.Add(category);
         }
 
