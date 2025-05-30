@@ -11,11 +11,13 @@ namespace ReportManagement
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreationDate { get; set; }
-        public Report(string title, string content, DateTime creationDate)
+        public string Category { get; set; }
+        public Report(string title, string content, DateTime creationDate, string category = "Без категории")
         {
             Title = title;
             Content = content;
             CreationDate = creationDate;
+            Category = category;
         }
     }
 }

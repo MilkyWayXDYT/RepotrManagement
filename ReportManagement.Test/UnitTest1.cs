@@ -26,12 +26,6 @@ namespace ReportManagement.Test
         string filePath = $"reports.txt";
 
         [TestMethod]
-        public void FileExist()
-        {
-            Assert.IsTrue(File.Exists(filePath));
-        }
-
-        [TestMethod]
         public void AddReport_AddReportAndSaveToFile()
         {
             string title = "Report name";
@@ -44,6 +38,8 @@ namespace ReportManagement.Test
             manager.AddReport(report);
 
             Assert.IsNotNull(manager.Reports.Count);
+
+            Assert.IsTrue(File.Exists(filePath));
 
             string contentFile = File.ReadAllText(filePath);
             string expectedString = $"{title}|{content}|{creationDate.ToString("yyyy-MM-dd HH:mm:ss")}";
