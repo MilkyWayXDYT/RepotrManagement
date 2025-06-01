@@ -1,8 +1,9 @@
+Report name|Report content|2025-05-14 00:00:00|New category
+Report name|Report content|2025-05-14 00:00:00|Первая категория
+Report name2|Report content2|2025-05-14 00:00:00|Вторая категория
+Report name|Report content|2025-05-14 00:00:00|Первая категория
+Report name2|Report content2|2025-05-14 00:00:00|Вторая категория
 Report name one category|Report content|2025-05-14 00:00:00|Первая категория
 Report name2 one category|Report content2|2025-05-14 00:00:00|Вторая категория
-Report name|Report content|2025-05-14 00:00:00|New category
-Report name one category|Report content|2025-05-14 00:00:00|Первая категория
-Report name2 one category|Report content2|2025-05-14 00:00:00|Вторая категория
-Report name|Report content|2025-05-14 00:00:00|New category
-Report name|Report content|2025-05-14 00:00:00|New category
-Report name|Report content|2025-05-14 00:00:00|New category
+Report name|Report content|2025-05-14 00:00:00|Без категории
+New report name|New report content|2025-05-14 00:00:00|Без категории

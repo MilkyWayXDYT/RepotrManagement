@@ -57,7 +57,7 @@ namespace ReportManagement
 
         public  List<Report> GetReportsByCategory(string category)
         {
-            if (string.IsNullOrEmpty(category) || category == "All")
+            if (string.IsNullOrEmpty(category) || category == "Все")
                 return Reports;
             return Reports.FindAll(x => x.Category == category);
         }

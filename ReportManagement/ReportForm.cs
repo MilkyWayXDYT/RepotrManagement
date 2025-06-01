@@ -23,6 +23,9 @@ namespace ReportManagement
         private TextBox newCategoryTextBox;
         private Button addCategoryButton;
         private ComboBox filterComboBox;
+        private Label filterHeader;
+        private Label categoryHeader;
+        private Label reportsHeader;
 
         public ReportForm()
         {
@@ -33,7 +36,8 @@ namespace ReportManagement
             {
                 Location = new System.Drawing.Point(10, 10),
                 Width = 200,
-                Text = "Название"
+                Text = "Название",
+                Name = "titleTextBox"
             };
             titleTextBox.GotFocus += TitleFocusEnter;
             titleTextBox.LostFocus += TitleFocusLeave;
@@ -45,79 +49,108 @@ namespace ReportManagement
                 Height = 100,
                 Multiline = true,
                 ScrollBars = ScrollBars.Both,
-                Text = "Содержание"
+                Text = "Содержание",
+                Name = "contentTextBox"
             };
             contentTextBox.GotFocus += ContentFocusEnter;
             contentTextBox.LostFocus += ContentFocusLeave;
 
+            categoryHeader = new Label
+            {
+                Location = new Point(220, 15),
+                Text = "Категория отчета"
+            };
+
             categoryComboBox = new ComboBox
             {
-                Location = new Point(220, 10),
+                Location = new Point(220, 40),
                 Width = 150,
-                DropDownStyle = ComboBoxStyle.DropDownList
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Name = "categoryComboBox"
             };
 
             newCategoryTextBox = new TextBox
             {
-                Location = new Point(220, 40),
+                Location = new Point(220, 70),
                 Width = 150,
-                Text = "Новая категория"
+                Text = "Новая категория",
+                Name = "newCategoryTextBox"
             };
             newCategoryTextBox.GotFocus += NewCategoryFocusEnter;
             newCategoryTextBox.LostFocus += NewCategoryFocusLeave;
 
             addCategoryButton = new Button
             {
-                Location = new Point(380, 40),
+                Location = new Point(380, 70),
                 Text = "Добавить категорию",
-                Width = 150
+                Width = 150,
+                Name = "addCategoryButton"
             };
             addCategoryButton.Click += AddCategoryButton_Click;
 
+            filterHeader = new Label
+            {
+                Location = new Point(10, 145),
+                Text = "Фильтр"
+            };
+
             filterComboBox = new ComboBox
             {
-                Location = new Point(10, 150),
+                Location = new Point(10, 170),
                 Width = 200,
-                DropDownStyle = ComboBoxStyle.DropDownList
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Name = "filterComboBox"
             };
             filterComboBox.SelectedIndexChanged += FilterComboBox_SelectedIndexChanged;
 
             addReportButton = new Button
             {
-                Location = new System.Drawing.Point(10, 180),
+                Location = new System.Drawing.Point(10, 200),
                 Text = "Добавить",
-                Width = 100
+                Width = 100,
+                Name = "addReportButton"
             };
             addReportButton.Click += AddReportButton_Click;
             removeReportButton = new Button
             {
-                Location = new System.Drawing.Point(120, 180),
+                Location = new System.Drawing.Point(120, 200),
                 Text = "Удалить",
-                Width = 100
+                Width = 100,
+                Name = "removeReportButton"
             };
             removeReportButton.Click += RemoveReportButton_Click;
             updateReportButton = new Button
             {
-                Location = new System.Drawing.Point(220, 180),
+                Location = new System.Drawing.Point(220, 200),
                 Text = "Обновить",
-                Width = 100
+                Width = 100,
+                Name = "updateReportButton"
             };
             updateReportButton.Click += UpdateReportButton_Click;
+            reportsHeader = new Label
+            {
+                Location = new Point(10, 225),
+                Text = "Отчеты"
+            };
             reportsListBox = new ListBox
             {
-                Location = new System.Drawing.Point(10, 210),
+                Location = new System.Drawing.Point(10, 250),
                 Width = 560,
-                Height = 200
+                Height = 200,
+                Name = "reportsListBox"
             };
             this.Controls.Add(titleTextBox);
             this.Controls.Add(contentTextBox); 
+            this.Controls.Add(categoryHeader); 
             this.Controls.Add(categoryComboBox);
             this.Controls.Add(newCategoryTextBox);
             this.Controls.Add(addCategoryButton);
+            this.Controls.Add(filterHeader);
             this.Controls.Add(filterComboBox);
             this.Controls.Add(addReportButton);
             this.Controls.Add(removeReportButton);
             this.Controls.Add(updateReportButton);
+            this.Controls.Add(reportsHeader);
             this.Controls.Add(reportsListBox);
             reportManager = new ReportManager();
             UpdateReportsList(); 
@@ -174,7 +207,7 @@ namespace ReportManagement
         private void UpdateFilterComboBox()
         {
             filterComboBox.Items.Clear();
-            filterComboBox.Items.Add("All");
+            filterComboBox.Items.Add("Все");
             foreach (var category in reportManager.Categories)
             {
                 filterComboBox.Items.Add(category);
