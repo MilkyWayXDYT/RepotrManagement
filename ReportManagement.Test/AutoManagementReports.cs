@@ -9,15 +9,17 @@ using System.IO;
 namespace ReportManagement.Test
 {
     [TestClass]
-    public class AutoAddReports
+    public class AutoManagementReports
     {
         private Application app;
         private UIA3Automation automation;
         private Window mainWindow;
+        private string dataPath = "reports.txt";
 
         [TestInitialize]
         public void TestInitialize()
         {
+            File.Delete(dataPath);
             app = Application.Launch(@"H:\Учеба\Тестирование\Лабораторные\ReportManagement\bin\Debug\ReportManagement.exe");
             automation = new UIA3Automation();
             mainWindow = app.GetMainWindow(automation);
@@ -43,8 +45,8 @@ namespace ReportManagement.Test
             addReportButton.Click();
 
             Assert.IsTrue(reportsListBox.Items[reportsListBox.Items.Length - 1].Name == report);
-            File.WriteAllText("reports.txt", string.Empty);
             app.Close();
+            File.Delete(dataPath);
         }
 
         [TestMethod]
@@ -77,15 +79,15 @@ namespace ReportManagement.Test
             addReportButton.Click();
 
             Assert.IsTrue(reportsListBox.Items[reportsListBox.Items.Length - 1].Name == report);
-            File.WriteAllText("reports.txt", string.Empty);
             app.Close();
+            File.Delete(dataPath);
         }
 
         [TestMethod]
         public void AddReport_EmptyName()
         {
-            string title = "";
-            string content = "Report content";
+            string title = "Report name";
+            string content = "";
             DateTime creationDate = DateTime.Today;
 
             var titleTextBox = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("titleTextBox")).AsTextBox();
@@ -94,7 +96,6 @@ namespace ReportManagement.Test
 
             titleTextBox.Text = title;
             contentTextBox.Text = content;
-
             addReportButton.Click();
 
             var messageBox = mainWindow.ModalWindows.FirstOrDefault();
@@ -107,8 +108,8 @@ namespace ReportManagement.Test
 
             msgButton.Click();
 
-            File.WriteAllText("reports.txt", string.Empty);
             app.Close();
+            File.Delete(dataPath);
         }
 
         [TestMethod]
@@ -124,7 +125,6 @@ namespace ReportManagement.Test
 
             titleTextBox.Text = title;
             contentTextBox.Text = content;
-
             addReportButton.Click();
 
             var messageBox = mainWindow.ModalWindows.FirstOrDefault();
@@ -137,8 +137,36 @@ namespace ReportManagement.Test
 
             msgButton.Click();
 
-            File.WriteAllText("reports.txt", string.Empty);
             app.Close();
+            File.Delete(dataPath);
+        }
+
+        [TestMethod]
+        public void CorrectFillingFile()
+        {
+            File.WriteAllText(dataPath, string.Empty);
+            string title = "Report name";
+            string content = "Report content";
+            DateTime creationDate = DateTime.Now;
+
+            string report = $"{title}|{content}|{creationDate.ToString("yyyy-MM-dd HH:mm:ss")}|Без категории\r\n";
+
+            var titleTextBox = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("titleTextBox")).AsTextBox();
+            var contentTextBox = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("contentTextBox")).AsTextBox();
+            var addReportButton = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("addReportButton")).AsButton();
+            var reportsListBox = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("reportsListBox")).AsListBox();
+
+            titleTextBox.Text = title;
+            contentTextBox.Text = content;
+
+            addReportButton.Click();
+            app.Close();
+
+            string inFile = File.ReadAllText(dataPath);
+            Assert.AreEqual(report, inFile);
+
+
+            File.Delete(dataPath);
         }
     }
 }
